@@ -31,7 +31,7 @@ namespace Entidades
         }
         public void AsignarPosiciones(bool x)
         {
-            int i = 0;
+            int i = 0;//empezar significa q juega primero, osea q el otro equipo reparte
             if (x) { i = 1; } else { i = 2; }
             this.empezar = x;
             foreach (var item in this.miembros)
@@ -44,7 +44,7 @@ namespace Entidades
         {
             foreach (var item in miembros)
             {
-                if (item.turno == 1) { item.rol = eRoles.Repartidor; }
+                if (item.turno == 1) { item.rol = eRoles.Mano; }
                 else if (item.turno == 6) { item.rol = eRoles.Pie; }
                 else if (item.turno == 5) { item.rol = eRoles.AntePie; }
 
@@ -52,27 +52,27 @@ namespace Entidades
                 {
                     if (this.miembros.Count() == 2)
                     {
-                        item.rol = eRoles.Mano;
+                        item.rol = eRoles.Jugador;
                     }
-                    else { item.rol = eRoles.Pie; }
+                    else { item.rol = eRoles.Pie; }// 1v1
                 }
 
                 if (item.turno == 3)
                 {
                     if (this.miembros.Count() == 3)
                     {
-                        item.rol = eRoles.Jugador;
+                        item.rol = eRoles.Jugador; //3v3
                     }
-                    else { item.rol = eRoles.AntePie; }
+                    else { item.rol = eRoles.AntePie; } //2v2
                 }
 
                 else if (item.turno == 4)
                 {
-                    if (this.miembros.Count() == 2)
+                    if (this.miembros.Count() == 2) //2v2
                     {
                         item.rol = eRoles.Pie;
                     }
-                    else { item.rol = eRoles.Jugador; }
+                    else { item.rol = eRoles.Jugador; } //3v3
                 }
             }
         }

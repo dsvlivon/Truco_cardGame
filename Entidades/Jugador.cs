@@ -57,7 +57,6 @@ namespace Entidades
             }
             return envido;
         }
-    
         public string MostrarDatosJugador()
         {
             return $"Nombre: {this.nombre}, Turno: {this.turno}, el {this.rol}";

@@ -35,7 +35,8 @@ namespace Entidades
         public static void CantaronEnvido() { }
         public static void IniciarJuego(eTipoPartida e)
         {
-            Truco.ListarJugadores(e);            
+            Truco.ListarJugadores(e);
+            Truco.AsignarEquipoQueEmpieza();
             Truco.Repartir();
         }
    
@@ -49,7 +50,7 @@ namespace Entidades
                 Rojo.AsignarPosiciones(true);
             }
             Azul.DeterminarRoles();
-            Azul.DeterminarRoles();
+            Rojo.DeterminarRoles();
         }
         public static void ListarJugadores(eTipoPartida v) 
         {
@@ -165,7 +166,7 @@ namespace Entidades
         private static void Repartir() {
             
             int c = 3;//3 Cartas x jugador
-            int r = 1;//rondas
+            int r = 0;
             if(partida == eTipoPartida.v1) {
                 c = c * 2;
                 for (int i = 1; i < c+1; i++)
@@ -179,15 +180,13 @@ namespace Entidades
                 c = c * 4;
                 for (int i = 1; i < c+1; i++)
                 {
-                    if ((i % 2) == 0)
-                    {
-                        Azul.miembros[i-1].mano.Add(Truco.RepartirCarta(i));
-                    }
-                    else { Rojo.miembros[i-1].mano.Add(Truco.RepartirCarta(i)); }
-                    //if (r == 1) { Azul.miembros[i-1].mano.Add(Truco.RepartirCarta(i)); r++; } 
-                    //else if (r == 2) { Rojo.miembros[i-1].mano.Add(Truco.RepartirCarta(i)); r++; }
-                    //else if (r == 3) { Azul.miembros[i-1].mano.Add(Truco.RepartirCarta(i)); r++; }
-                    //else if (r == 4) { Rojo.miembros[i-1].mano.Add(Truco.RepartirCarta(i)); r++; r = 1; }                    
+                    if ((i % 2) == 0) {
+                        Azul.miembros[r].mano.Add(Truco.RepartirCarta(i));
+                        r++;
+                    } 
+                    else { Rojo.miembros[r].mano.Add(Truco.RepartirCarta(i));
+                        r = 0;
+                    }             
                 }
             }
             else {
