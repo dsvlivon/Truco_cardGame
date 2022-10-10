@@ -1,0 +1,34 @@
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.exe
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.deps.json
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.runtimeconfig.json
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.runtimeconfig.dev.json
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.dll
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Consola.pdb
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Entidades.dll
+C:\Users\L54556\source\repos\Entidades\Consola\bin\Debug\netcoreapp3.1\Entidades.pdb
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.AssemblyReference.cache
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfoInputs.cache
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfo.cs
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.CoreCompileInputs.cache
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.CopyComplete
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.dll
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.pdb
+C:\Users\L54556\source\repos\Entidades\Consola\obj\Debug\netcoreapp3.1\Consola.genruntimeconfig.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.exe
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.deps.json
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.runtimeconfig.json
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.runtimeconfig.dev.json
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.dll
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Consola.pdb
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Entidades.dll
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\bin\Debug\netcoreapp3.1\Entidades.pdb
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.AssemblyReference.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfoInputs.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfo.cs
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.CoreCompileInputs.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.CopyComplete
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.dll
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.pdb
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\PRACTICA\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.genruntimeconfig.cache
