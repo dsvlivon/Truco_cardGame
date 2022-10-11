@@ -50,11 +50,11 @@ namespace Entidades
 
                 if (item.turno == 2)
                 {
-                    if (this.miembros.Count() == 2)
+                    if (this.miembros.Count() == 1)
                     {
-                        item.rol = eRoles.Jugador;
+                        item.rol = eRoles.Pie;
                     }
-                    else { item.rol = eRoles.Pie; }// 1v1
+                    else { item.rol = eRoles.Jugador; }// 1v1
                 }
 
                 if (item.turno == 3)

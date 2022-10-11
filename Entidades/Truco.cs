@@ -175,8 +175,16 @@ namespace Entidades
                     } else { Azul.miembros[0].mano.Add(Truco.RepartirCarta(i)); }
                 }
             }
-            else if(partida == eTipoPartida.v2) {
-                c = c * 4;
+            else if(partida == eTipoPartida.v2 || partida == eTipoPartida.v3) {
+                int x = 0;
+                if(partida == eTipoPartida.v2) {
+                    x = 2;
+                    c = c * (x*2); 
+                } else {
+                    x = 3;
+                    c = c * (x*2); 
+                }
+                
                 for (int i = 1; i < c + 1; i++)
                 {
                     if ((i % 2) == 0)
@@ -185,23 +193,10 @@ namespace Entidades
                         r++;
                     }
                     else { Rojo.miembros[r].mano.Add(Truco.RepartirCarta(i)); }
-                    if (r == 2)
+                    if (r == x)
                     { r = 0; }
                 }
-            }
-            else {
-                c = c * 6;
-                for (int i = 1; i < c + 1; i++)
-                {
-                    if (r == 1) {
-                        j1.mano.Add(Truco.RepartirCarta(i)); r++; }
-                    else if (r == 3) { Azul.miembros[i - 1].mano.Add(Truco.RepartirCarta(i)); r++; }
-                    else if (r == 4) { Rojo.miembros[i - 1].mano.Add(Truco.RepartirCarta(i)); r++; }
-                    else if (r == 5) { Azul.miembros[i - 1].mano.Add(Truco.RepartirCarta(i)); r++; }
-                    else if (r == 6) { Rojo.miembros[i - 1].mano.Add(Truco.RepartirCarta(i)); r++; r = 1; }
-                }
-            }
-        
+            }       
         }
     }
 }
