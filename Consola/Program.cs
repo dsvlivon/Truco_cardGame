@@ -17,8 +17,8 @@ namespace Consola
             Truco.j2 = new Jugador("Yo", eEquipo.Nostros);
             Truco.j3 = new Jugador("Galle", eEquipo.Ellos);
             Truco.j4 = new Jugador("Pepe", eEquipo.Nostros);
-            //Truco.j5 = new Jugador("Jr", eEquipo.Ellos);
-            //Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
+            Truco.j5 = new Jugador("Jr", eEquipo.Ellos);
+            Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
             //Truco.Repartir(eTipoPartida.v1);
 
             //barajar testing

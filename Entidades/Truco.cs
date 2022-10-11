@@ -39,7 +39,6 @@ namespace Entidades
             Truco.AsignarEquipoQueEmpieza();
             Truco.Repartir();
         }
-   
         public static void AsignarEquipoQueEmpieza()
         {
             if (Azul.r.Next(1, 10) > Rojo.r.Next(1, 10)) {
@@ -178,15 +177,16 @@ namespace Entidades
             }
             else if(partida == eTipoPartida.v2) {
                 c = c * 4;
-                for (int i = 1; i < c+1; i++)
+                for (int i = 1; i < c + 1; i++)
                 {
-                    if ((i % 2) == 0) {
+                    if ((i % 2) == 0)
+                    {
                         Azul.miembros[r].mano.Add(Truco.RepartirCarta(i));
                         r++;
-                    } 
-                    else { Rojo.miembros[r].mano.Add(Truco.RepartirCarta(i));
-                        r = 0;
-                    }             
+                    }
+                    else { Rojo.miembros[r].mano.Add(Truco.RepartirCarta(i)); }
+                    if (r == 2)
+                    { r = 0; }
                 }
             }
             else {
