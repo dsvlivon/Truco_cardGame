@@ -9,8 +9,6 @@ namespace Consola
         {
             Console.WriteLine("Trucardi!");
 
-            //CAMBIO A TENER CLASE EQUIPO
-            //Hay q adaptar el metodo Repartir
 
             //jugadores + repartir testing
             Truco.j1 = new Jugador("Tino", eEquipo.Ellos);
@@ -21,17 +19,25 @@ namespace Consola
             Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
             //Truco.Repartir(eTipoPartida.v1);
 
+            // Roles testing
+            
+
+            //CAMBIO A TENER CLASE EQUIPO
+            //Hay q adaptar el metodo Repartir
+            Truco.IniciarJuego(eTipoPartida.v3);//OK
+            //Truco.IniciarJuego(eTipoPartida.v2);//OK
+            //Truco.IniciarJuego(eTipoPartida.v1);//OK
+            Console.WriteLine(Truco.Azul.MostrarJugadores());
+            Console.WriteLine(Truco.Rojo.MostrarJugadores());
+
+
+
+
+
             //barajar testing
             //Truco.Barajar(Truco.cartas);
             //Carta c = Mazo.RepartirCarta(4);
             //Console.WriteLine((Truco.Repartir(1)).MostrarCarta());
-
-            // Roles testing
-            //Truco.IniciarJuego(eTipoPartida.v3);//OK
-            Truco.IniciarJuego(eTipoPartida.v2);//OK
-            //Truco.IniciarJuego(eTipoPartida.v1);//OK
-            Console.WriteLine(Truco.Azul.MostrarJugadores());
-            Console.WriteLine(Truco.Rojo.MostrarJugadores());
 
             //Truco.Repartir(eTipoPartida.v3);// OK
             //Console.WriteLine(Truco.j1.MostarMano());s

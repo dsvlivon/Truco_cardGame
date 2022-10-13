@@ -51,7 +51,7 @@ namespace Entidades
             Azul.DeterminarRoles();
             Rojo.DeterminarRoles();
         }
-        public static void ListarJugadores(eTipoPartida v) 
+        public static void ListarJugadores(eTipoPartida v)//COCHINO
         {
             partida = v;
             if (partida == eTipoPartida.v1)
@@ -71,7 +71,7 @@ namespace Entidades
                 if (j1 != null) { Azul.miembros.Add(j1); }
                 if (j2 != null) { Azul.miembros.Add(j2); }
                 if (j3 != null) { Azul.miembros.Add(j3); }
-                
+
                 if (j4 != null) { Rojo.miembros.Add(j4); }
                 if (j5 != null) { Rojo.miembros.Add(j5); }
                 if (j6 != null) { Rojo.miembros.Add(j6); }
@@ -84,16 +84,16 @@ namespace Entidades
             string v = "N° Cartas: ";
             foreach (var item in cartas)
             {
-                x.Add(item.indexer);                
+                x.Add(item.indexer);
             }
-            
+
             foreach (var item in cartas)
             {
-                if(item.indexer == 0) { 
-                    item.indexer = r.Next(1, 40); 
+                if (item.indexer == 0) {
+                    item.indexer = r.Next(1, 40);
                     while (x.Contains(item.indexer))
                     {
-                        item.indexer = r.Next(1, 41);                        
+                        item.indexer = r.Next(1, 41);
                     }
                     x.Add(item.indexer);
                     buf = buf + item.indexer + ",";
@@ -154,7 +154,7 @@ namespace Entidades
             Carta c = null;
             foreach (var item in cartas)
             {
-                if(item.indexer == i)
+                if (item.indexer == i)
                 {
                     cartas.Remove(item);
                     return item;
@@ -163,40 +163,31 @@ namespace Entidades
             return c;
         }
         private static void Repartir() {
-            
-            int c = 3;//3 Cartas x jugador
-            int r = 0;
-            if(partida == eTipoPartida.v1) {
-                c = c * 2;
-                for (int i = 1; i < c+1; i++)
-                {
-                    if ((i % 2) == 0) {
-                        Rojo.miembros[0].mano.Add(Truco.RepartirCarta(i));
-                    } else { Azul.miembros[0].mano.Add(Truco.RepartirCarta(i)); }
-                }
+            int cartasXJugador = 3;
+            int numeroJugador = 0;
+            int jugadores = 0;
+
+            if (partida == eTipoPartida.v1) { jugadores = 1;
+            } else { jugadores = (partida == eTipoPartida.v2) ? 2 : 3; }
+            cartasXJugador = cartasXJugador * (jugadores * 2);
+
+            for (int i = 1; i < cartasXJugador + 1; i++)
+            {
+                if ((i % 2) == 0) {
+                    Rojo.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i));
+                    numeroJugador++;
+                } else { Azul.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i)); }
+                if (numeroJugador == jugadores)
+                { numeroJugador = 0; }
             }
-            else if(partida == eTipoPartida.v2 || partida == eTipoPartida.v3) {
-                int x = 0;
-                if(partida == eTipoPartida.v2) {
-                    x = 2;
-                    c = c * (x*2); 
-                } else {
-                    x = 3;
-                    c = c * (x*2); 
-                }
-                
-                for (int i = 1; i < c + 1; i++)
-                {
-                    if ((i % 2) == 0)
-                    {
-                        Azul.miembros[r].mano.Add(Truco.RepartirCarta(i));
-                        r++;
-                    }
-                    else { Rojo.miembros[r].mano.Add(Truco.RepartirCarta(i)); }
-                    if (r == x)
-                    { r = 0; }
-                }
-            }       
+        }
+        public static void CalularPuntos() 
+        {
+            eEquipo RondaUno;
+            eEquipo RondaDos;
+            eEquipo RondaTres;
+            
+
         }
     }
 }
