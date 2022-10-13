@@ -14,12 +14,7 @@ namespace Entidades
         public static Equipo Rojo;
         public static Random r;
         public static List<Jugador> jugadores;
-        public static Jugador j1;
-        public static Jugador j2;
-        public static Jugador j3;
-        public static Jugador j4;
-        public static Jugador j5;
-        public static Jugador j6;
+
         static Truco()
         {
             cartas = new List<Carta>();
@@ -29,6 +24,7 @@ namespace Entidades
 
             r = new Random();
             CrearCartas();
+            CrearJugadores();
             Barajar();
         }
 
@@ -51,37 +47,21 @@ namespace Entidades
             Azul.DeterminarRoles();
             Rojo.DeterminarRoles();
         }
-        public static void ListarJugadores(eTipoPartida v)//COCHINO
+        public static void ListarJugadores(eTipoPartida v)
         {
             partida = v;
-            if (partida == eTipoPartida.v1)
-            {
-                if (j1 != null) { Azul.miembros.Add(j1); }
-                if (j2 != null) { Rojo.miembros.Add(j2); }
-            }
-            else if (partida == eTipoPartida.v2)
-            {
-                if (j1 != null) { Azul.miembros.Add(j1); }
-                if (j2 != null) { Azul.miembros.Add(j2); }
 
-                if (j3 != null) { Rojo.miembros.Add(j3); }
-                if (j4 != null) { Rojo.miembros.Add(j4); }
-            }
-            else {
-                if (j1 != null) { Azul.miembros.Add(j1); }
-                if (j2 != null) { Azul.miembros.Add(j2); }
-                if (j3 != null) { Azul.miembros.Add(j3); }
-
-                if (j4 != null) { Rojo.miembros.Add(j4); }
-                if (j5 != null) { Rojo.miembros.Add(j5); }
-                if (j6 != null) { Rojo.miembros.Add(j6); }
+            foreach (var item in jugadores)
+            {
+                if(item.equipo == eEquipo.Nostros){ Azul.miembros.Add(item); }
+                else { Rojo.miembros.Add(item); }
             }
         }
         private static void Barajar()
         {
             List<int> x = new List<int>();
-            string buf = "X: ";
-            string v = "N° Cartas: ";
+            //string buf = "X: ";
+            //string aux = "N° Cartas: ";
             foreach (var item in cartas)
             {
                 x.Add(item.indexer);
@@ -96,14 +76,14 @@ namespace Entidades
                         item.indexer = r.Next(1, 41);
                     }
                     x.Add(item.indexer);
-                    buf = buf + item.indexer + ",";
+                    //buf = buf + item.indexer + ",";
                     //Console.WriteLine(buf);
                 }
-                v = v + item.indexer + ",";
-                //Console.WriteLine(v);
+                //aux = aux + item.indexer + ",";
+                //Console.WriteLine(aux);
             }
             cartas = cartas.OrderBy(i => i.Numero).ToList();
-            //Console.WriteLine(v);
+            //Console.WriteLine(aux);
         }
         private static void CrearCartas() {
             Carta e1 = new Carta(1, ePalo.Espada); cartas.Add(e1);
@@ -188,6 +168,15 @@ namespace Entidades
             eEquipo RondaTres;
             
 
+        }
+        public static void CrearJugadores()
+        {
+            Jugador j1 = new Jugador("Tino", eEquipo.Ellos); Truco.jugadores.Add(j1);
+            Jugador j2 = new Jugador("Yo", eEquipo.Nostros); Truco.jugadores.Add(j2);
+            Jugador j3 = new Jugador("Galle", eEquipo.Ellos); Truco.jugadores.Add(j3);
+            Jugador j4 = new Jugador("Pepe", eEquipo.Nostros); Truco.jugadores.Add(j4);
+            Jugador j5 = new Jugador("Jr", eEquipo.Ellos); Truco.jugadores.Add(j5);
+            Jugador j6 = new Jugador("Davi", eEquipo.Nostros); Truco.jugadores.Add(j6);
         }
     }
 }

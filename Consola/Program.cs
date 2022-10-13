@@ -9,18 +9,24 @@ namespace Consola
         {
             Console.WriteLine("Trucardi!");
 
-
             //jugadores + repartir testing
-            Truco.j1 = new Jugador("Tino", eEquipo.Ellos);
-            Truco.j2 = new Jugador("Yo", eEquipo.Nostros);
-            Truco.j3 = new Jugador("Galle", eEquipo.Ellos);
-            Truco.j4 = new Jugador("Pepe", eEquipo.Nostros);
-            Truco.j5 = new Jugador("Jr", eEquipo.Ellos);
-            Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
+            //Truco.j1 = new Jugador("Tino", eEquipo.Ellos);
+            //Truco.j2 = new Jugador("Yo", eEquipo.Nostros);
+            //Truco.j3 = new Jugador("Galle", eEquipo.Ellos);
+            //Truco.j4 = new Jugador("Pepe", eEquipo.Nostros);
+            //Truco.j5 = new Jugador("Jr", eEquipo.Ellos);
+            //Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
+
+            //Jugador j1 = new Jugador("Tino", eEquipo.Ellos); Truco.jugadores.Add(j1);
+            //Jugador j2 = new Jugador("Yo", eEquipo.Nostros); Truco.jugadores.Add(j2);
+            //Jugador j3 = new Jugador("Galle", eEquipo.Ellos); Truco.jugadores.Add(j3);
+            //Jugador j4 = new Jugador("Pepe", eEquipo.Nostros); Truco.jugadores.Add(j4);
+            //Jugador j5 = new Jugador("Jr", eEquipo.Ellos); Truco.jugadores.Add(j5);
+            //Jugador j6 = new Jugador("Davi", eEquipo.Nostros); Truco.jugadores.Add(j6);
+
             //Truco.Repartir(eTipoPartida.v1);
 
             // Roles testing
-            
 
             //CAMBIO A TENER CLASE EQUIPO
             //Hay q adaptar el metodo Repartir
@@ -29,8 +35,6 @@ namespace Consola
             //Truco.IniciarJuego(eTipoPartida.v1);//OK
             Console.WriteLine(Truco.Azul.MostrarJugadores());
             Console.WriteLine(Truco.Rojo.MostrarJugadores());
-
-
 
 
 

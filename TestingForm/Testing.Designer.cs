@@ -29,9 +29,9 @@ namespace TestingForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnCarta0 = new System.Windows.Forms.Button();
             this.btnCarta1 = new System.Windows.Forms.Button();
             this.btnCarta2 = new System.Windows.Forms.Button();
-            this.btnCarta3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -41,35 +41,40 @@ namespace TestingForm
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.playedCard0 = new System.Windows.Forms.PictureBox();
+            this.playedCard1 = new System.Windows.Forms.PictureBox();
+            this.playedCard2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard0)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard2)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnCarta0
+            // 
+            this.btnCarta0.Location = new System.Drawing.Point(995, 608);
+            this.btnCarta0.Name = "btnCarta0";
+            this.btnCarta0.Size = new System.Drawing.Size(133, 212);
+            this.btnCarta0.TabIndex = 0;
+            this.btnCarta0.UseVisualStyleBackColor = true;
+            this.btnCarta0.Click += new System.EventHandler(this.btnCarta1_Click);
             // 
             // btnCarta1
             // 
-            this.btnCarta1.Location = new System.Drawing.Point(995, 608);
+            this.btnCarta1.Location = new System.Drawing.Point(1146, 607);
             this.btnCarta1.Name = "btnCarta1";
             this.btnCarta1.Size = new System.Drawing.Size(133, 212);
-            this.btnCarta1.TabIndex = 0;
-            this.btnCarta1.Text = "carta 1";
+            this.btnCarta1.TabIndex = 1;
             this.btnCarta1.UseVisualStyleBackColor = true;
+            this.btnCarta1.Click += new System.EventHandler(this.btnCarta2_Click);
             // 
             // btnCarta2
             // 
-            this.btnCarta2.Location = new System.Drawing.Point(1146, 607);
+            this.btnCarta2.Location = new System.Drawing.Point(1292, 608);
             this.btnCarta2.Name = "btnCarta2";
             this.btnCarta2.Size = new System.Drawing.Size(133, 212);
-            this.btnCarta2.TabIndex = 1;
-            this.btnCarta2.Text = "carta 2";
+            this.btnCarta2.TabIndex = 2;
             this.btnCarta2.UseVisualStyleBackColor = true;
-            // 
-            // btnCarta3
-            // 
-            this.btnCarta3.Location = new System.Drawing.Point(1292, 608);
-            this.btnCarta3.Name = "btnCarta3";
-            this.btnCarta3.Size = new System.Drawing.Size(133, 212);
-            this.btnCarta3.TabIndex = 2;
-            this.btnCarta3.Text = "carta 3";
-            this.btnCarta3.UseVisualStyleBackColor = true;
+            this.btnCarta2.Click += new System.EventHandler(this.btnCarta3_Click);
             // 
             // button4
             // 
@@ -158,20 +163,37 @@ namespace TestingForm
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // playedCard0
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(491, 278);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(433, 144);
-            this.richTextBox1.TabIndex = 12;
-            this.richTextBox1.Text = "";
+            this.playedCard0.Location = new System.Drawing.Point(769, 445);
+            this.playedCard0.Name = "playedCard0";
+            this.playedCard0.Size = new System.Drawing.Size(133, 212);
+            this.playedCard0.TabIndex = 12;
+            this.playedCard0.TabStop = false;
+            // 
+            // playedCard1
+            // 
+            this.playedCard1.Location = new System.Drawing.Point(806, 388);
+            this.playedCard1.Name = "playedCard1";
+            this.playedCard1.Size = new System.Drawing.Size(133, 212);
+            this.playedCard1.TabIndex = 13;
+            this.playedCard1.TabStop = false;
+            // 
+            // playedCard2
+            // 
+            this.playedCard2.Location = new System.Drawing.Point(851, 339);
+            this.playedCard2.Name = "playedCard2";
+            this.playedCard2.Size = new System.Drawing.Size(133, 212);
+            this.playedCard2.TabIndex = 14;
+            this.playedCard2.TabStop = false;
             // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Forms.Properties.Resources.terciopelo_verde;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1437, 861);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button9);
@@ -181,20 +203,26 @@ namespace TestingForm
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.btnCarta3);
             this.Controls.Add(this.btnCarta2);
             this.Controls.Add(this.btnCarta1);
+            this.Controls.Add(this.btnCarta0);
+            this.Controls.Add(this.playedCard1);
+            this.Controls.Add(this.playedCard2);
+            this.Controls.Add(this.playedCard0);
             this.Name = "Testing";
-            this.Text = "r";
+            this.Text = "Truco testing";
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard0)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playedCard2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Button btnCarta0;
         private System.Windows.Forms.Button btnCarta1;
         private System.Windows.Forms.Button btnCarta2;
-        private System.Windows.Forms.Button btnCarta3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
@@ -204,7 +232,9 @@ namespace TestingForm
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.PictureBox playedCard0;
+        private System.Windows.Forms.PictureBox playedCard1;
+        private System.Windows.Forms.PictureBox playedCard2;
     }
 }
 

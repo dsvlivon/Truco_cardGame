@@ -65,7 +65,8 @@ namespace Entidades
         public Carta JugarCarta(Carta c) {
             foreach (var item in mano)
             {
-                if(c == item) { mano.Remove(item); return item; }
+                if(c == item) { //mano.Remove(item);
+                                return item; }
             } return null;
         }
     }

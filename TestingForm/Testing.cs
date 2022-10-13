@@ -14,40 +14,32 @@ namespace TestingForm
 {
     public partial class Testing : Form
     {
-        public string basePath = "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Media\\";
+        public string basePath = "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Media\\"; //this need to change
         public string dorso;
         public string cards;
 
 
-
         public Testing()
         {
+            InitializeComponent();
             dorso = basePath + "dorsos\\dorso0.jpg";
             cards = basePath + "cartas asart\\";
-            InitializeComponent();
-            Truco.j1 = new Jugador("Tino", eEquipo.Ellos);
-            Truco.j2 = new Jugador("Yo", eEquipo.Nostros);
-            Truco.j3 = new Jugador("Galle", eEquipo.Ellos);
-            Truco.j4 = new Jugador("Pepe", eEquipo.Nostros);
-            Truco.j5 = new Jugador("Jr", eEquipo.Ellos);
-            Truco.j6 = new Jugador("Davi", eEquipo.Nostros);
-            Truco.IniciarJuego(eTipoPartida.v3);
+            
+            Truco.IniciarJuego(eTipoPartida.v2);
 
-            richTextBox1.Text = button4.BackgroundImage.ToString();
-            //button7.BackgroundImage =
-            //path = "";
+            //richTextBox1.Text = button4.BackgroundImage.ToString();
+            
 
-            string a = Truco.Azul.miembros[0].mano[0].Numero.ToString()+ Truco.Azul.miembros[0].mano[0].Palo;
-            string s = Truco.Azul.miembros[0].mano[1].Numero.ToString() + Truco.Azul.miembros[0].mano[1].Palo;
-            string d = Truco.Azul.miembros[0].mano[2].Numero.ToString() + Truco.Azul.miembros[0].mano[2].Palo;
-
-
-            btnCarta1.BackgroundImage = Image.FromFile(cards+a+".png");
+            btnCarta0.BackgroundImage = Image.FromFile(cards + Truco.Azul.miembros[0].mano[0].Numero.ToString() + Truco.Azul.miembros[0].mano[0].Palo + ".png");
+            btnCarta0.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCarta1.BackgroundImage = Image.FromFile(cards + Truco.Azul.miembros[0].mano[1].Numero.ToString() + Truco.Azul.miembros[0].mano[1].Palo + ".png");
             btnCarta1.BackgroundImageLayout = ImageLayout.Stretch;
-            btnCarta2.BackgroundImage = Image.FromFile(cards + s + ".png");
+            btnCarta2.BackgroundImage = Image.FromFile(cards + Truco.Azul.miembros[0].mano[2].Numero.ToString() + Truco.Azul.miembros[0].mano[2].Palo + ".png");
             btnCarta2.BackgroundImageLayout = ImageLayout.Stretch;
-            btnCarta3.BackgroundImage = Image.FromFile(cards + d + ".png");
-            btnCarta3.BackgroundImageLayout = ImageLayout.Stretch;
+
+            playedCard0.Hide();
+            playedCard1.Hide();
+            playedCard2.Hide();
 
 
             button7.BackgroundImage = Image.FromFile(dorso);
@@ -65,5 +57,31 @@ namespace TestingForm
             //btnCarta1.Image = Truco.Azul.miembros[1].mano[1];
         }
 
+        private void btnCarta1_Click(object sender, EventArgs e)
+        {
+            playedCard0.Show();
+            playedCard0.BackgroundImageLayout = ImageLayout.Stretch;
+            playedCard0.BackgroundImage = btnCarta0.BackgroundImage;
+            Truco.Azul.miembros[0].JugarCarta(new Carta(Truco.Azul.miembros[0].mano[0].Numero, Truco.Azul.miembros[0].mano[0].Palo));
+            btnCarta0.Hide();
+        }
+
+        private void btnCarta2_Click(object sender, EventArgs e)
+        {
+            playedCard1.Show();
+            playedCard1.BackgroundImageLayout = ImageLayout.Stretch;
+            playedCard1.BackgroundImage = btnCarta1.BackgroundImage;
+            Truco.Azul.miembros[0].JugarCarta(new Carta(Truco.Azul.miembros[0].mano[1].Numero, Truco.Azul.miembros[0].mano[1].Palo));
+            btnCarta1.Hide();
+        }
+
+        private void btnCarta3_Click(object sender, EventArgs e)
+        {
+            playedCard2.Show();
+            playedCard2.BackgroundImageLayout = ImageLayout.Stretch;
+            playedCard2.BackgroundImage = btnCarta2.BackgroundImage;
+            Truco.Azul.miembros[0].JugarCarta(new Carta(Truco.Azul.miembros[0].mano[2].Numero, Truco.Azul.miembros[0].mano[2].Palo));
+            btnCarta2.Hide();
+        }
     }
 }

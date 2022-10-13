@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    
+
     public class Carta
     {
         private int numero;
@@ -15,9 +15,9 @@ namespace Entidades
         public int indexer;
         private bool figura;
 
-        public bool Figura{ get { return this.figura; } set { this.figura = value; } }
+        public bool Figura { get { return this.figura; } set { this.figura = value; } }
         public int Numero { get { return this.numero; } set { this.numero = value; } }
-        public ePalo Palo { get { return this.palo; } set { this.palo = value;} }
+        public ePalo Palo { get { return this.palo; } set { this.palo = value; } }
 
         public Carta(int n, ePalo p)
         {
@@ -25,12 +25,12 @@ namespace Entidades
             ObtenerValor();
             this.indexer = 0;
         }
-        public Carta(int n, ePalo p, int i): this(n,p)
+        public Carta(int n, ePalo p, int i) : this(n, p)
         {
-            this.indexer = i;            
+            this.indexer = i;
         }
 
-        public string MostrarCarta() {            
+        public string MostrarCarta() {
             return $"{this.numero} de {this.Palo}";
         }
         private void ObtenerValor()
@@ -53,13 +53,13 @@ namespace Entidades
                 case 1:
                     if (this.Palo == ePalo.Espada) { this.valor = 14; }
                     else if (this.Palo == ePalo.Basto) { this.valor = 13; }
-                    else{ this.valor = 13; }
+                    else { this.valor = 13; }
                     break;
                 case 2:
                     this.valor = 9;
                     break;
                 case 3:
-                    this.valor = 10; 
+                    this.valor = 10;
                     break;
                 case 4:
                     this.valor = 1;
@@ -84,11 +84,16 @@ namespace Entidades
                 case 12:
                     this.valor = 7; this.figura = true;
                     break;
-                
+
                 default:
                     //..
                     break;
-            }          
+            }
         }
+        public static bool operator ==(Carta c1, Carta c2)
+        {
+            if(c1.Numero == c2.Numero && c1.Palo == c2.Palo) { return true; } return false;
+        }
+        public static bool operator !=(Carta c1, Carta c2) { return !(c1 == c2); }
     }
 }
