@@ -194,6 +194,7 @@ namespace TestingForm
             this.BackgroundImage = global::Forms.Properties.Resources.terciopelo_verde;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1437, 861);
+            this.Controls.Add(this.playedCard2);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button9);
@@ -207,7 +208,6 @@ namespace TestingForm
             this.Controls.Add(this.btnCarta1);
             this.Controls.Add(this.btnCarta0);
             this.Controls.Add(this.playedCard1);
-            this.Controls.Add(this.playedCard2);
             this.Controls.Add(this.playedCard0);
             this.Name = "Testing";
             this.Text = "Truco testing";
