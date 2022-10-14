@@ -17,6 +17,7 @@ namespace Entidades
 
         public bool Figura { get { return this.figura; } set { this.figura = value; } }
         public int Numero { get { return this.numero; } set { this.numero = value; } }
+        public int Valor { get { return this.valor; } }
         public ePalo Palo { get { return this.palo; } set { this.palo = value; } }
 
         public Carta(int n, ePalo p)
@@ -86,7 +87,7 @@ namespace Entidades
                     break;
 
                 default:
-                    //..
+                    this.valor = 0;
                     break;
             }
         }

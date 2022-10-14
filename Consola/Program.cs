@@ -30,7 +30,7 @@ namespace Consola
 
             //CAMBIO A TENER CLASE EQUIPO
             //Hay q adaptar el metodo Repartir
-            Truco.IniciarJuego(eTipoPartida.v3);//OK
+            Truco.IniciarJuego(eTipoPartida.v2);//OK
             //Truco.IniciarJuego(eTipoPartida.v2);//OK
             //Truco.IniciarJuego(eTipoPartida.v1);//OK
             Console.WriteLine(Truco.Azul.MostrarJugadores());

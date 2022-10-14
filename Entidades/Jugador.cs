@@ -15,7 +15,7 @@ namespace Entidades
         public int turno;
         public int envido;
         public eRoles rol;
-
+        
         public Jugador(string n, eEquipo e)
         {
             this.equipo = e; this.nombre = n;

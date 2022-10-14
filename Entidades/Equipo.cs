@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Equipo
     {
-        public List<Jugador> miembros;
+        public List<IAJugador> miembros;
         public eEquipo equipo;
         public int puntos;
         public bool empezar;
@@ -16,7 +16,7 @@ namespace Entidades
 
         public Equipo()
         {
-            this.miembros = new List<Jugador>();
+            this.miembros = new List<IAJugador>();
             r = new Random();
         }
 
@@ -75,8 +75,7 @@ namespace Entidades
                     else { item.rol = eRoles.Jugador; } //3v3
                 }
             }
-        }
-        
+        }        
 
     }
 }
