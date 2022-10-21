@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class IAJugador:Jugador
+    public class IA
     {
-        public IAJugador(string n, eEquipo e):base(n,e) { }
+        public List<Carta> mano;
+        public IA(List<Carta> m){ this.mano = m; }
 
         public Carta DecidirCartaParaPrimera()
         {

@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Equipo
     {
-        public List<IAJugador> miembros;
+        public List<Jugador> miembros;
         public eEquipo equipo;
         public int puntos;
         public bool empezar;
@@ -16,7 +16,7 @@ namespace Entidades
 
         public Equipo()
         {
-            this.miembros = new List<IAJugador>();
+            this.miembros = new List<Jugador>();
             r = new Random();
         }
 

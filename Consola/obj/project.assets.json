@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Consola\\Consola.csproj",
+      "projectUniqueName": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\DANIEL\\Truco\\Consola\\Consola.csproj",
       "projectName": "Consola",
-      "projectPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Consola\\Consola.csproj",
+      "projectPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\DANIEL\\Truco\\Consola\\Consola.csproj",
       "packagesPath": "C:\\Users\\L54556\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Consola\\obj\\",
+      "outputPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\DANIEL\\Truco\\Consola\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -56,8 +56,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\Truco\\Entidades\\Entidades.csproj"
+            "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\DANIEL\\Truco\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\L54556\\OneDrive - Kimberly-Clark\\Desktop\\DANIEL\\Truco\\Entidades\\Entidades.csproj"
             }
           }
         }

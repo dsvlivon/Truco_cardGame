@@ -349,30 +349,30 @@ namespace TestingForm
 
         #endregion
 
-        private System.Windows.Forms.Button btnCarta0;
-        private System.Windows.Forms.Button btnCarta1;
-        private System.Windows.Forms.Button btnCarta2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.PictureBox playedCard0;
-        private System.Windows.Forms.PictureBox playedCard1;
-        private System.Windows.Forms.PictureBox playedCard2;
-        private System.Windows.Forms.PictureBox bot1Card2;
-        private System.Windows.Forms.PictureBox bot1Card1;
-        private System.Windows.Forms.PictureBox bot1Card0;
-        private System.Windows.Forms.PictureBox bot2Card2;
-        private System.Windows.Forms.PictureBox bot2Card1;
-        private System.Windows.Forms.PictureBox bot2Card0;
-        private System.Windows.Forms.PictureBox bot0Card2;
-        private System.Windows.Forms.PictureBox bot0Card1;
-        private System.Windows.Forms.PictureBox bot0Card0;
+        public System.Windows.Forms.Button btnCarta0;
+        public System.Windows.Forms.Button btnCarta1;
+        public System.Windows.Forms.Button btnCarta2;
+        public System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button button7;
+        public System.Windows.Forms.Button button8;
+        public System.Windows.Forms.Button button9;
+        public System.Windows.Forms.Button button10;
+        public System.Windows.Forms.Button button11;
+        public System.Windows.Forms.Button button12;
+        public System.Windows.Forms.PictureBox playedCard0;
+        public System.Windows.Forms.PictureBox playedCard1;
+        public System.Windows.Forms.PictureBox playedCard2;
+        public System.Windows.Forms.PictureBox bot1Card2;
+        public System.Windows.Forms.PictureBox bot1Card1;
+        public System.Windows.Forms.PictureBox bot1Card0;
+        public System.Windows.Forms.PictureBox bot2Card2;
+        public System.Windows.Forms.PictureBox bot2Card1;
+        public System.Windows.Forms.PictureBox bot2Card0;
+        public System.Windows.Forms.PictureBox bot0Card2;
+        public System.Windows.Forms.PictureBox bot0Card1;
+        public System.Windows.Forms.PictureBox bot0Card0;
         private System.Windows.Forms.PictureBox RepartirMazo;
         private System.Windows.Forms.RichTextBox rtbXXX;
     }

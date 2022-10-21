@@ -49,3 +49,10 @@ C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\Truco\Consola\obj\Debug\netcor
 C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.dll
 C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.pdb
 C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.genruntimeconfig.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.AssemblyReference.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfoInputs.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.AssemblyInfo.cs
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.csproj.CoreCompileInputs.cache
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.dll
+C:\Users\L54556\OneDrive - Kimberly-Clark\Desktop\DANIEL\Truco\Consola\obj\Debug\netcoreapp3.1\Consola.pdb

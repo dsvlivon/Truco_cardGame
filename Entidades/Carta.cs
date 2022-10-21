@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,11 @@ namespace Entidades
         private int numero;
         private ePalo palo;
         private int valor;
-        public int indexer;
+
         private bool figura;
+        public Image frente;
+        public int indexer;
+
 
         public bool Figura { get { return this.figura; } set { this.figura = value; } }
         public int Numero { get { return this.numero; } set { this.numero = value; } }
@@ -22,15 +26,11 @@ namespace Entidades
 
         public Carta(int n, ePalo p)
         {
+            indexer = 0;
             this.numero = n; this.palo = p;
             ObtenerValor();
-            this.indexer = 0;
+            frente = Image.FromFile(SideBoard.cards + numero.ToString() + palo.ToString()+".png");
         }
-        public Carta(int n, ePalo p, int i) : this(n, p)
-        {
-            this.indexer = i;
-        }
-
         public string MostrarCarta() {
             return $"{this.numero} de {this.Palo}";
         }
