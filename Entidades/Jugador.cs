@@ -19,6 +19,7 @@ namespace Entidades
         public int envido;
         public eRoles rol;
         public IA IA;
+        public bool ia;
 
 
         public Jugador(string n)
@@ -32,6 +33,7 @@ namespace Entidades
         public Jugador(string n, bool ia):this(n)
         {
             IA = new IA(mano);
+            this.ia = ia;
         }
         public Jugador(string n, bool ia, eEquipo e) : this(n, ia)
         {

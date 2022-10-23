@@ -11,17 +11,31 @@ namespace Entidades
         public List<Carta> mano;
         public IA(List<Carta> m){ this.mano = m; }
 
-        public Carta DecidirCartaParaPrimera()
+        
+        public int DecidirCartaParaPrimera()
         {
-            Carta c = new Carta(0, ePalo.Comodin);
-            foreach (var item in mano)
+            //Carta c = new Carta(0, ePalo.Comodin);
+            int index = 0; int valor = 0;
+            for (int i = 0; i < mano.Count(); i++)
             {
-                if(c.Valor == 0 || item.Valor > c.Valor)
+                if (valor == 0 || mano[i].Valor > valor)
                 {
-                    c = item;
+                    index = i;
                 }
             }
-            return c;
+            return index;
+        }public int DecidirCartaParaPrimera(Carta nosotrosUno, Carta nosotrosDos, Carta ellosUno, Carta ellosDos, Carta ellosTres)
+        {
+            //Carta c = new Carta(0, ePalo.Comodin);
+            int index = 0; int valor = 0;
+            for (int i = 0; i < mano.Count(); i++)
+            {
+                if (valor == 0 || mano[i].Valor > valor)
+                {
+                    index = i;
+                }
+            }
+            return index;
         }
     }
 }

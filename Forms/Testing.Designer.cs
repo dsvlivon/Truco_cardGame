@@ -29,32 +29,34 @@ namespace TestingForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCarta0 = new System.Windows.Forms.Button();//0
-            this.btnCarta1 = new System.Windows.Forms.Button();//1
-            this.btnCarta2 = new System.Windows.Forms.Button();//2
-            this.button4 = new System.Windows.Forms.Button();//3
-            this.button5 = new System.Windows.Forms.Button();//4
-            this.button6 = new System.Windows.Forms.Button();//5
-            this.button7 = new System.Windows.Forms.Button();//6
-            this.button8 = new System.Windows.Forms.Button();//7
-            this.button9 = new System.Windows.Forms.Button();//8
-            this.button10 = new System.Windows.Forms.Button();//9
-            this.button11 = new System.Windows.Forms.Button();//10
-            this.button12 = new System.Windows.Forms.Button();//11
-            this.playedCard0 = new System.Windows.Forms.PictureBox();//12
-            this.playedCard1 = new System.Windows.Forms.PictureBox();//13
-            this.playedCard2 = new System.Windows.Forms.PictureBox();//14
-            this.bot1Card2 = new System.Windows.Forms.PictureBox();//15
-            this.bot1Card1 = new System.Windows.Forms.PictureBox();//16
-            this.bot1Card0 = new System.Windows.Forms.PictureBox();//17
-            this.bot2Card2 = new System.Windows.Forms.PictureBox();//18
-            this.bot2Card1 = new System.Windows.Forms.PictureBox();//19
-            this.bot2Card0 = new System.Windows.Forms.PictureBox();//20
-            this.bot0Card2 = new System.Windows.Forms.PictureBox();//21/
-            this.bot0Card1 = new System.Windows.Forms.PictureBox();//22
-            this.bot0Card0 = new System.Windows.Forms.PictureBox();//23
+            this.btnCarta0 = new System.Windows.Forms.Button();
+            this.btnCarta1 = new System.Windows.Forms.Button();
+            this.btnCarta2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.playedCard0 = new System.Windows.Forms.PictureBox();
+            this.playedCard1 = new System.Windows.Forms.PictureBox();
+            this.playedCard2 = new System.Windows.Forms.PictureBox();
+            this.bot1Card2 = new System.Windows.Forms.PictureBox();
+            this.bot1Card1 = new System.Windows.Forms.PictureBox();
+            this.bot1Card0 = new System.Windows.Forms.PictureBox();
+            this.bot2Card2 = new System.Windows.Forms.PictureBox();
+            this.bot2Card1 = new System.Windows.Forms.PictureBox();
+            this.bot2Card0 = new System.Windows.Forms.PictureBox();
+            this.bot0Card2 = new System.Windows.Forms.PictureBox();
+            this.bot0Card1 = new System.Windows.Forms.PictureBox();
+            this.bot0Card0 = new System.Windows.Forms.PictureBox();
             this.RepartirMazo = new System.Windows.Forms.PictureBox();
             this.rtbXXX = new System.Windows.Forms.RichTextBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.txtTurno = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.playedCard0)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playedCard1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playedCard2)).BeginInit();
@@ -295,6 +297,23 @@ namespace TestingForm
             this.rtbXXX.TabIndex = 25;
             this.rtbXXX.Text = "";
             // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(917, 746);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(112, 34);
+            this.btnStart.TabIndex = 26;
+            this.btnStart.Text = "Comenzar";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // txtTurno
+            // 
+            this.txtTurno.Location = new System.Drawing.Point(799, 13);
+            this.txtTurno.Name = "txtTurno";
+            this.txtTurno.Size = new System.Drawing.Size(294, 31);
+            this.txtTurno.TabIndex = 27;
+            // 
             // Testing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -302,6 +321,8 @@ namespace TestingForm
             this.BackgroundImage = global::Forms.Properties.Resources.terciopelo_verde;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1906, 906);
+            this.Controls.Add(this.txtTurno);
+            this.Controls.Add(this.btnStart);
             this.Controls.Add(this.rtbXXX);
             this.Controls.Add(this.RepartirMazo);
             this.Controls.Add(this.bot0Card2);
@@ -344,6 +365,7 @@ namespace TestingForm
             ((System.ComponentModel.ISupportInitialize)(this.bot0Card0)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RepartirMazo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -375,6 +397,8 @@ namespace TestingForm
         public System.Windows.Forms.PictureBox bot0Card0;
         private System.Windows.Forms.PictureBox RepartirMazo;
         private System.Windows.Forms.RichTextBox rtbXXX;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.TextBox txtTurno;
     }
 }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Entidades
@@ -14,6 +15,11 @@ namespace Entidades
         public static Equipo Rojo;
         public static Random r;
         public static List<Jugador> jugadores;
+        public static int cantDeCartas;
+        public static int cantDeTurnos;
+        public static int turnoActual;
+        public static Jugador play;
+        public static Thread hilo;
 
         static Truco()
         {
@@ -21,18 +27,19 @@ namespace Entidades
             jugadores = new List<Jugador>();
             Azul = new Equipo();
             Rojo = new Equipo();
-
             r = new Random();
-            CrearCartas();
-            
+            CrearCartas();            
             Barajar();
+            turnoActual = 1;
         }
 
         public static void IniciarJuego(eTipoPartida e)
         {
             CrearJugadores(e);
             Truco.AsignarEquipoQueEmpieza();
+            Truco.AsignarRoles();
             Truco.Repartir();
+            
         }
         private static void Barajar()
         {
@@ -75,34 +82,43 @@ namespace Entidades
             return c;
         } 
         private static void Repartir() {
-            int cartasXJugador = 3;
-            int numeroJugador = 0;
-            int jugadores = 0;
+            cantDeCartas = 3 * jugadores.Count();
+            cantDeTurnos = cantDeCartas;
+            int indexJugador = 0;
+            int contador = 0;
 
-            if (partida == eTipoPartida.v1) { jugadores = 1;
-            } else { jugadores = (partida == eTipoPartida.v2) ? 2 : 3; }
-            cartasXJugador = cartasXJugador * (jugadores * 2);
+            //if (partida == eTipoPartida.v1) { cantJugador = 1;
+            //} else { cantJugador = (partida == eTipoPartida.v2) ? 2 : 3; }
+            //cartasXJugador = cartasXJugador * (cantJugador* 2);
 
-            for (int i = 1; i < cartasXJugador +1; i++)
+            for (int i = 1; i < cantDeCartas+1; i++)
             {
-                if ((i % 2) == 0) {
-                    Rojo.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i));
-                    numeroJugador++;
-                } else { Azul.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i)); }
-                if (numeroJugador == jugadores)
-                { numeroJugador = 0; }
+                //if ((i % 2) == 0) {
+                //    Rojo.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i));
+                //    numeroJugador++;
+                //} else { Azul.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i)); }
+                //if (numeroJugador == jugadores)
+                //{ numeroJugador = 0; }
+                jugadores[indexJugador].mano.Add(Truco.RepartirCarta(i));
+                contador++;
+                if (contador == 3) { contador = 0; indexJugador++; }
             }
         }
-        public static void CalularPuntos() { }
-        public static void CantaronEnvido() { }
         public static string MostrarJugadores()
         {
-            StringBuilder s = new StringBuilder();
-            foreach (var item in jugadores)
+            StringBuilder s1 = new StringBuilder();
+            StringBuilder s2 = new StringBuilder();
+            
+            List<Jugador> SortedList = jugadores.OrderBy(o => o.turno).ToList();
+            foreach (var item in SortedList)
             {
-                s.AppendLine(item.MostrarDatosJugador() + "\nMano: " + item.MostarMano());
+                if (item.equipo == eEquipo.Nostros)
+                {
+                    s1.AppendLine(item.MostrarDatosJugador() + "\nMano: " + item.MostarMano());
+                }
+                else { s2.AppendLine(item.MostrarDatosJugador() + "\nMano: " + item.MostarMano()); }
             }
-            return s.ToString();
+            return "Nosotros: \n" + s1.ToString() + "\nEllos\n" + s2.ToString();
         }
         public static void AsignarEquipoQueEmpieza()
         {
@@ -134,7 +150,7 @@ namespace Entidades
                 }
             }
         }
-        public static void DeterminarRoles()
+        public static void AsignarRoles()
         {
             foreach (var item in jugadores) {
                 if (item.turno == 1) { item.rol = eRoles.Mano; }
@@ -143,23 +159,23 @@ namespace Entidades
 
                 if (item.turno == 2)
                 {
-                    if (jugadores.Count() == 1)
+                    if (partida == eTipoPartida.v1)
                     {
                         item.rol = eRoles.Pie;
                     }
-                    else { item.rol = eRoles.Jugador; }// 1v1
+                    else { item.rol = eRoles.Jugador; }// 3v3 y 2v2
                 }
-                if (item.turno == 3)
+                if (item.turno == 3) 
                 {
-                    if (jugadores.Count() == 3)
+                    if (partida == eTipoPartida.v2)
                     {
-                        item.rol = eRoles.Jugador; //3v3
+                        item.rol = eRoles.AntePie; //2v2
                     }
-                    else { item.rol = eRoles.AntePie; } //2v2
+                    else { item.rol = eRoles.Jugador; } //3v3
                 }
                 else if (item.turno == 4)
                 {
-                    if (jugadores.Count() == 2) //2v2
+                    if (partida == eTipoPartida.v2) //2v2
                     {
                         item.rol = eRoles.Pie;
                     }
@@ -167,6 +183,40 @@ namespace Entidades
                 }
             }
         }
+        public static Jugador RetornarJugadorQueDebeJugar() {
+            Jugador j = null;
+            foreach (var item in jugadores)
+            {
+                if(item.turno == turnoActual) { j = item; }
+            } return j;
+        }
+        public static int Jugar(int cont)
+        {
+            int acccionesActual = 0;
+            for (int i = 0; i < cont; i++)
+            {
+                if (play is null)
+                {
+                    play = Truco.RetornarJugadorQueDebeJugar();
+                }
+                acccionesActual = play.acciones.Count();
+                if (play.ia)
+                {
+                    Thread.Sleep(Truco.r.Next(500, 2000));
+                    play.JugarCarta(play.IA.DecidirCartaParaPrimera());
+                } else
+                {
+                    return turnoActual;
+                }
+                Truco.turnoActual++;
+                play = null;
+            }
+            return cantDeTurnos;
+        }
+
+        /////////////////////////////////////////
+        public static void CalularPuntos() { }
+        public static void CantaronEnvido() { }
         /////////////////////////////////////////
         private static void CrearCartas()
         {
@@ -227,10 +277,11 @@ namespace Entidades
             {
                 AgregarBot(r.Next(1, 7), eEquipo.Ellos);
             } else {
-                if (partida == eTipoPartida.v2) { cont = 3; } else { cont = 4; }
-                for (int i = 0; i < cont; i++) {
-                    if (flag) { AgregarBot(r.Next(1, 7), eEquipo.Nostros); flag = false; }
-                    else { AgregarBot(r.Next(1, 7), eEquipo.Ellos); flag = true; }
+                if (partida == eTipoPartida.v2) { cont = 4; } else { cont = 6; }
+                while (jugadores.Count() < cont)
+                {
+                    if (flag) { AgregarBot(r.Next(1, 10), eEquipo.Nostros); flag = false; }
+                    else { AgregarBot(r.Next(1, 10), eEquipo.Ellos); flag = true; }
                 }
             }             
         }
@@ -245,41 +296,39 @@ namespace Entidades
                     Truco.jugadores.Add(j1);
                     break;
                 case 2:
-                    //Jugador j2 = new Jugador("Tino", true);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j2); }
-                    //else { Truco.Rojo.miembros.Add(j2); }
                     Jugador j2 = new Jugador("Tino", true, e);
                     Truco.jugadores.Add(j2);
                     break;
                 case 3:
                     Jugador j3 = new Jugador("Galle", true, e);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j3); }
-                    //else { Truco.Rojo.miembros.Add(j3); }
                     Truco.jugadores.Add(j3);
                     break;
                 case 4:
                     Jugador j4 = new Jugador("Pepe", true, e);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j4); }
-                    //else { Truco.Rojo.miembros.Add(j4); }
                     Truco.jugadores.Add(j4);
                     break;
                 case 5:
                     Jugador j5 = new Jugador("Jr", true, e);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j5); }
-                    //else { Truco.Rojo.miembros.Add(j5); }
                     Truco.jugadores.Add(j5);
                     break;
                 case 6:
                     Jugador j6 = new Jugador("Davi", true, e);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j6); }
-                    //else { Truco.Rojo.miembros.Add(j6); }
-                    Truco.jugadores.Add(j6);
                     break;
                 case 7:
                     Jugador j7 = new Jugador("Pipo", true, e);
-                    //if (e == eEquipo.Nostros) { Truco.Azul.miembros.Add(j7); }
-                    //else { Truco.Rojo.miembros.Add(j7); }
-                    Truco.jugadores.Add(j7);
+                     Truco.jugadores.Add(j7);
+                    break;
+                case 8:
+                    Jugador j8 = new Jugador("Nelson", true, e);
+                    Truco.jugadores.Add(j8);
+                    break;
+                case 9:
+                    Jugador j9 = new Jugador("Vitu", true, e);
+                    Truco.jugadores.Add(j9);
+                    break;
+                case 10:
+                    Jugador j10 = new Jugador("Capi", true, e);
+                    Truco.jugadores.Add(j10);
                     break;
                 default:
                     break;
