@@ -33,26 +33,27 @@ namespace TestingForm
         
         private void btnCarta0_Click(object sender, EventArgs e)
         {
-            Truco.jugadores[0].JugarCarta(0);
+            Truco.play.JugarCarta(0);
             btnP0Carta0.Hide();
-            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
-            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
+            Truco.turnoActual++;
+            Truco.play = Truco.RetornarJugadorQueDebeJugar();
+            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
         }
         private void btnCarta1_Click(object sender, EventArgs e)
         {
-            Truco.jugadores[0].JugarCarta(1);
+            Truco.play.JugarCarta(1);
             btnP0Carta1.Hide();
-            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
-            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
-
+            Truco.turnoActual++;
+            Truco.play = Truco.RetornarJugadorQueDebeJugar();
+            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
         }
         private void btnCarta2_Click(object sender, EventArgs e)
         {
-            Truco.jugadores[0].JugarCarta(2);
+            Truco.play.JugarCarta(2);
             btnP0Carta2.Hide();
-            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
-            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
-
+            Truco.turnoActual++;
+            Truco.play = Truco.RetornarJugadorQueDebeJugar();
+            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
         }
         private void RevelarCarta0(Image image)
         {
@@ -78,7 +79,7 @@ namespace TestingForm
                 }
             }else { }
         }
-        private void DeterminarPosicionDelMazo()//NEED TO BE FIXED
+        private void DeterminarPosicionDelMazo()
         {
             Jugador j = Truco.RetornarJugadorPie();
             RepartirMazo.Location = j.silla;
@@ -128,7 +129,7 @@ namespace TestingForm
         private void btnStart_Click(object sender, EventArgs e)
         {
             Truco.auxTurno = Truco.Jugar(Truco.jugadores.Count());
-            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre; 
+            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre; 
         }
     } 
 }

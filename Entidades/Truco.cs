@@ -217,7 +217,7 @@ namespace Entidades
                 {
                     play = Truco.RetornarJugadorQueDebeJugar();
                 }
-                acccionesActual = play.acciones.Count();
+                acccionesActual = play.acciones.Count();//para q era esto?
                 if (play.ia)
                 {
                     //Thread.Sleep(Truco.r.Next(500, 2000));
@@ -227,6 +227,7 @@ namespace Entidades
                     return turnoActual;
                 }
                 Truco.turnoActual++;
+                if(turnoActual > cont) { turnoActual = 1; }
                 play = null;
             }
             return cantDeTurnos;
