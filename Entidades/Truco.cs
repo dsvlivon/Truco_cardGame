@@ -18,6 +18,7 @@ namespace Entidades
         public static int cantDeCartas;
         public static int cantDeTurnos;
         public static int turnoActual;
+        public static int auxTurno;
         public static Jugador play;
         public static Thread hilo;
 
@@ -38,8 +39,7 @@ namespace Entidades
             CrearJugadores(e);
             Truco.AsignarEquipoQueEmpieza();
             Truco.AsignarRoles();
-            Truco.Repartir();
-            
+            Truco.Repartir();            
         }
         private static void Barajar()
         {
@@ -109,8 +109,7 @@ namespace Entidades
             StringBuilder s1 = new StringBuilder();
             StringBuilder s2 = new StringBuilder();
             
-            List<Jugador> SortedList = jugadores.OrderBy(o => o.turno).ToList();
-            foreach (var item in SortedList)
+            foreach (var item in jugadores)
             {
                 if (item.equipo == eEquipo.Nostros)
                 {
@@ -122,16 +121,6 @@ namespace Entidades
         }
         public static void AsignarEquipoQueEmpieza()
         {
-            //if (Azul.r.Next(1, 10) > Rojo.r.Next(1, 10)) {
-            //    Azul.AsignarPosiciones(true);
-            //    Rojo.AsignarPosiciones(false);
-            //} else {
-            //    Azul.AsignarPosiciones(false);
-            //    Rojo.AsignarPosiciones(true);
-            //}
-            //Azul.DeterminarRoles();
-            //Rojo.DeterminarRoles();
-            //nosotros              //ellos
             if (Truco.r.Next(1, 10) > Truco.r.Next(1, 10)) {
                 Truco.AsignarTurnos(eEquipo.Nostros);
             } else { Truco.AsignarTurnos(eEquipo.Ellos); }
@@ -149,6 +138,8 @@ namespace Entidades
                     ellos = ellos+ 2;
                 }
             }
+            List<Jugador> SortedList = jugadores.OrderBy(o => o.turno).ToList();
+            jugadores = SortedList;
         }
         public static void AsignarRoles()
         {
@@ -190,6 +181,33 @@ namespace Entidades
                 if(item.turno == turnoActual) { j = item; }
             } return j;
         }
+        public static Jugador RetornarJugador()
+        {
+            Jugador j = null;
+            foreach (var item in jugadores)
+            {
+                if (!item.ia) { j = item; }
+            }
+            return j;
+        }
+        public static Jugador RetornarJugadorPie()
+        {
+            Jugador j = null;
+            foreach (var item in jugadores)
+            {
+                if (item.rol == eRoles.Pie) { j = item; }
+            }
+            return j;
+        }
+        public static Jugador RetornarJugadorPorTurno(int i)
+        {
+            Jugador j = null;
+            foreach (var item in jugadores)
+            {
+                if (i == item.turno) { j = item; }
+            }
+            return j;
+        }
         public static int Jugar(int cont)
         {
             int acccionesActual = 0;
@@ -202,7 +220,7 @@ namespace Entidades
                 acccionesActual = play.acciones.Count();
                 if (play.ia)
                 {
-                    Thread.Sleep(Truco.r.Next(500, 2000));
+                    //Thread.Sleep(Truco.r.Next(500, 2000));
                     play.JugarCarta(play.IA.DecidirCartaParaPrimera());
                 } else
                 {
@@ -213,7 +231,6 @@ namespace Entidades
             }
             return cantDeTurnos;
         }
-
         /////////////////////////////////////////
         public static void CalularPuntos() { }
         public static void CantaronEnvido() { }
@@ -268,8 +285,7 @@ namespace Entidades
         {
             partida = e;
             bool flag = false;
-            Jugador x = new Jugador("Angel", eEquipo.Nostros);
-            //Truco.Azul.miembros.Add(x);            
+            Jugador x = new Jugador("Angel", eEquipo.Nostros);                
             Truco.jugadores.Add(x);//jugador p testear
 
             int cont = 0;
@@ -313,6 +329,7 @@ namespace Entidades
                     break;
                 case 6:
                     Jugador j6 = new Jugador("Davi", true, e);
+                    Truco.jugadores.Add(j6);
                     break;
                 case 7:
                     Jugador j7 = new Jugador("Pipo", true, e);

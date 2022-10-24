@@ -14,103 +14,121 @@ namespace TestingForm
 {
     public partial class Testing : Form
     {
-        int turnoActual = 0;
-        
+        Jugador jugador;
+        Jugador botB;
+        Jugador botC;
+        Jugador botD;
+        Jugador botE;
+        Jugador botF;
         public Testing()
         {
             InitializeComponent();
             Truco.IniciarJuego(eTipoPartida.v2);
-            DeterminarPosicionDelMazo();
+            jugador = Truco.RetornarJugador();
             SetInicialDeCartas();
+            DeterminarPosicionDelMazo();//NEED TO BE FIXED
             Truco.play = Truco.RetornarJugadorQueDebeJugar();
             txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
-
         }
         
         private void btnCarta0_Click(object sender, EventArgs e)
         {
             Truco.jugadores[0].JugarCarta(0);
-            btnCarta0.Hide();
-            turnoActual = Truco.Jugar(Truco.jugadores.Count());
+            btnP0Carta0.Hide();
+            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
+            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
         }
         private void btnCarta1_Click(object sender, EventArgs e)
         {
             Truco.jugadores[0].JugarCarta(1);
-            btnCarta1.Hide();
-            turnoActual = Truco.Jugar(Truco.jugadores.Count());
+            btnP0Carta1.Hide();
+            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
+            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
+
         }
         private void btnCarta2_Click(object sender, EventArgs e)
         {
             Truco.jugadores[0].JugarCarta(2);
-            btnCarta2.Hide();
-            turnoActual = Truco.Jugar(Truco.jugadores.Count());
+            btnP0Carta2.Hide();
+            Truco.auxTurno = Truco.Jugar(Truco.auxTurno);
+            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre;
+
         }
         private void RevelarCarta0(Image image)
         {
             if (image != null)
             {
-                if (playedCard0.BackgroundImage == null)
+                if (p0Card0.BackgroundImage == null)
                 {
-                    playedCard0.Show();
-                    playedCard0.BackgroundImageLayout = ImageLayout.Stretch;
-                    playedCard0.BackgroundImage = image;
+                    p0Card0.Show();
+                    p0Card0.BackgroundImageLayout = ImageLayout.Stretch;
+                    p0Card0.BackgroundImage = image;
                 }
-                else if (playedCard1.BackgroundImage == null)
+                else if (p0Card1.BackgroundImage == null)
                 {
-                    playedCard1.Show();
-                    playedCard1.BackgroundImageLayout = ImageLayout.Stretch;
-                    playedCard1.BackgroundImage = image;
+                    p0Card1.Show();
+                    p0Card1.BackgroundImageLayout = ImageLayout.Stretch;
+                    p0Card1.BackgroundImage = image;
                 }
                 else
                 {
-                    playedCard2.Show();
-                    playedCard2.BackgroundImageLayout = ImageLayout.Stretch;
-                    playedCard2.BackgroundImage = image;
+                    p0Card2.Show();
+                    p0Card2.BackgroundImageLayout = ImageLayout.Stretch;
+                    p0Card2.BackgroundImage = image;
                 }
             }else { }
         }
-       
-        private void DeterminarPosicionDelMazo()
+        private void DeterminarPosicionDelMazo()//NEED TO BE FIXED
         {
-            //by defualt the player who shuffle and deal the cards it´s going to be the last player of each team.
-            if (Truco.jugadores[1].rol == eRoles.Pie) {
-                RepartirMazo.Location = new Point(1110, 13);
-            } else {
-                RepartirMazo.Location = new Point(660, 679);
-            }
+            Jugador j = Truco.RetornarJugadorPie();
+            RepartirMazo.Location = j.silla;
             rtbXXX.Text = Truco.MostrarJugadores();
-        }      
-
+        }
         public void SetInicialDeCartas()
         {
-            Truco.jugadores[0].CargarAcciones(playedCard0, playedCard1, playedCard2);
-            Truco.jugadores[1].CargarAcciones(bot0Card0, bot0Card1, bot0Card2);
-            if (Truco.partida != eTipoPartida.v1) { 
-                Truco.jugadores[2].CargarAcciones(bot1Card0, bot1Card1, bot1Card2);
-                Truco.jugadores[3].CargarAcciones(bot2Card0, bot2Card1, bot2Card2);
-                //if(Truco.partida == eTipoPartida.v3) {
-                //    Truco.jugadores[4].CargarAcciones(bot3Card0, bot3Card1, bot3Card2);
-                //    Truco.jugadores[5].CargarAcciones(bot4Card0, bot4Card1, bot4Card2);
-                //}
+            int b = 0; int c = 0; int d = 0;
+            switch (jugador.turno)
+            {
+                case 1:
+                    b = 2; c = 3; d = 4;
+                    break;
+                case 2:
+                    b = 3; c = 4; d = 1;
+                    break;
+                case 3:
+                    b = 4; c = 1; d = 2;
+                    break;
+                case 4:
+                    b = 1; c = 2; d = 3;
+                    break;
+                default:
+                    break;
             }
-            button4.BackgroundImage = Image.FromFile(SideBoard.dorso); button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button5.BackgroundImage = Image.FromFile(SideBoard.dorso); button5.BackgroundImageLayout = ImageLayout.Stretch;
-            button6.BackgroundImage = Image.FromFile(SideBoard.dorso); button6.BackgroundImageLayout = ImageLayout.Stretch;
-            button7.BackgroundImage = Image.FromFile(SideBoard.dorso); button7.BackgroundImageLayout = ImageLayout.Stretch;
-            button8.BackgroundImage = Image.FromFile(SideBoard.dorso); button8.BackgroundImageLayout = ImageLayout.Stretch;
-            button9.BackgroundImage = Image.FromFile(SideBoard.dorso); button9.BackgroundImageLayout = ImageLayout.Stretch;
-            button10.BackgroundImage = Image.FromFile(SideBoard.dorso); button10.BackgroundImageLayout = ImageLayout.Stretch;
-            button11.BackgroundImage = Image.FromFile(SideBoard.dorso); button11.BackgroundImageLayout = ImageLayout.Stretch;
-            button12.BackgroundImage = Image.FromFile(SideBoard.dorso); button12.BackgroundImageLayout = ImageLayout.Stretch;
-
-            btnCarta0.BackgroundImage = Truco.jugadores[0].mano[0].frente; btnCarta0.BackgroundImageLayout = ImageLayout.Stretch;
-            btnCarta1.BackgroundImage = Truco.jugadores[0].mano[1].frente; btnCarta1.BackgroundImageLayout = ImageLayout.Stretch;
-            btnCarta2.BackgroundImage = Truco.jugadores[0].mano[2].frente; btnCarta2.BackgroundImageLayout = ImageLayout.Stretch;
+            
+            jugador.CargarControles(p0Card0, p0Card1, p0Card2, txtP0Nombre, new Point(1754, 462));
+            btnP0Carta0.BackgroundImage = jugador.mano[0].frente; btnP0Carta0.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP0Carta1.BackgroundImage = jugador.mano[1].frente; btnP0Carta1.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP0Carta2.BackgroundImage = jugador.mano[2].frente; btnP0Carta2.BackgroundImageLayout = ImageLayout.Stretch;
+            ////////////////////////////////////////////////////////////////////
+            Truco.RetornarJugadorPorTurno(b).CargarControles(p1Card0, p1Card1, p1Card2, txtP1Nombre, new Point(1098, 12));
+            Truco.RetornarJugadorPorTurno(c).CargarControles(p2Card0, p2Card1, p2Card2, txtP2Nombre, new Point(20, 236));
+            Truco.RetornarJugadorPorTurno(d).CargarControles(p3Card0, p3Card1, p3Card2, txtP3Nombre, new Point(660, 682));
+            ////////////////////////////////////////////////////////////////////
+            btnP1Carta0.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP1Carta0.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP1Carta2.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP1Carta2.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP1Carta1.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP1Carta1.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP2Carta0.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP2Carta0.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP2Carta1.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP2Carta1.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP2Carta2.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP2Carta2.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP3Carta2.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP3Carta2.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP3Carta1.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP3Carta1.BackgroundImageLayout = ImageLayout.Stretch;
+            btnP3Carta0.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP3Carta0.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            turnoActual = Truco.Jugar(Truco.jugadores.Count());
+            Truco.auxTurno = Truco.Jugar(Truco.jugadores.Count());
+            txtTurno.Text = "Turno: " + Truco.turnoActual + "- " + Truco.play.nombre; 
         }
     } 
 }

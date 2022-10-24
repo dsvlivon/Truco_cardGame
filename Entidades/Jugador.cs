@@ -20,7 +20,7 @@ namespace Entidades
         public eRoles rol;
         public IA IA;
         public bool ia;
-
+        public Point silla;
 
         public Jugador(string n)
         {
@@ -102,13 +102,15 @@ namespace Entidades
                 cardBox.Image = null;
             }
         }
-        public void CargarAcciones(PictureBox a, PictureBox b, PictureBox c)
+        public void CargarControles(PictureBox a, PictureBox b, PictureBox c, TextBox t, Point s)
         {
+            this.silla = s;
             acciones.Enqueue(a); acciones.Enqueue(b); acciones.Enqueue(c);
             foreach (var item in acciones)
             {
                 item.BackgroundImage = null; item.Hide();
             }
+            t.Text = this.nombre;
         }
     }
 }
