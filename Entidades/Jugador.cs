@@ -29,6 +29,7 @@ namespace Entidades
             this.turno = 0;
             acciones = new Queue<PictureBox>();
             mano = new List<Carta>();
+            //this.envido = CalcularEnvido();
         }
         public Jugador(string n, bool ia):this(n)
         {
@@ -80,27 +81,27 @@ namespace Entidades
         {
             return $"Nombre: {this.nombre}, Turno: {this.turno}, el {this.rol}";
         }
-        public void JugarCarta(int n) {
+        public Carta JugarCarta(int n) {
             Carta x = mano[n];
             //mano.Remove(x);
             PictureBox pic = acciones.Dequeue();
             pic.Show();
             pic.BackgroundImageLayout = ImageLayout.Stretch;
             pic.BackgroundImage = x.frente;
+            return x;
         }
-        private void RevelarCarta(PictureBox cardBox, Image image)
+        public Carta JugarCarta(Carta c)
         {
-            if (image != null)
+            if (this.mano == c)
             {
-                cardBox.Show();
-                cardBox.BackgroundImageLayout = ImageLayout.Stretch;
-                cardBox.BackgroundImage = image;
+                PictureBox pic = acciones.Dequeue();
+                pic.Show();
+                pic.BackgroundImageLayout = ImageLayout.Stretch;
+                pic.BackgroundImage = c.frente;
+                mano.Remove(c);
+                return c;
             }
-            else
-            {
-                cardBox.Hide();
-                cardBox.Image = null;
-            }
+            return null;
         }
         public void CargarControles(PictureBox a, PictureBox b, PictureBox c, TextBox t, Point s)
         {
@@ -112,5 +113,25 @@ namespace Entidades
             }
             t.Text = this.nombre;
         }
+        public static bool operator ==(Jugador j1, Jugador j2)
+        {
+            if (j1.silla == j2.silla && j1.nombre == j2.nombre && j1.ia == j2.ia) { return true; }
+            return false;
+        }
+        public static bool operator !=(Jugador j1, Jugador j2) { return !(j1 == j2); }
+        //private void RevelarCarta(PictureBox cardBox, Image image)
+        //{
+        //    if (image != null)
+        //    {
+        //        cardBox.Show();
+        //        cardBox.BackgroundImageLayout = ImageLayout.Stretch;
+        //        cardBox.BackgroundImage = image;
+        //    }
+        //    else
+        //    {
+        //        cardBox.Hide();
+        //        cardBox.Image = null;
+        //    }
+        //}
     }
 }

@@ -21,10 +21,14 @@ namespace Entidades
         public static int auxTurno;
         public static Jugador play;
         public static Thread hilo;
+        public static List<Carta> cartasJugadas;
+        public static List<Jugada> historial;
 
         static Truco()
         {
             cartas = new List<Carta>();
+            cartasJugadas = new List<Carta>();
+            historial = new List<Jugada>();
             jugadores = new List<Jugador>();
             Azul = new Equipo();
             Rojo = new Equipo();
@@ -44,13 +48,10 @@ namespace Entidades
         private static void Barajar()
         {
             List<int> x = new List<int>();
-            //string buf = "X: ";
-            //string aux = "N° Cartas: ";
             foreach (var item in cartas)
             {
                 x.Add(item.indexer);
             }
-
             foreach (var item in cartas)
             {
                 if (item.indexer == 0) {
@@ -60,14 +61,9 @@ namespace Entidades
                         item.indexer = r.Next(1, 41);
                     }
                     x.Add(item.indexer);
-                    //buf = buf + item.indexer + ",";
-                    //Console.WriteLine(buf);
                 }
-                //aux = aux + item.indexer + ",";
-                //Console.WriteLine(aux);
             }
             cartas = cartas.OrderBy(i => i.Numero).ToList();
-            //Console.WriteLine(aux);
         }
         private static Carta RepartirCarta(int i) {
             Carta c = null;
@@ -87,18 +83,8 @@ namespace Entidades
             int indexJugador = 0;
             int contador = 0;
 
-            //if (partida == eTipoPartida.v1) { cantJugador = 1;
-            //} else { cantJugador = (partida == eTipoPartida.v2) ? 2 : 3; }
-            //cartasXJugador = cartasXJugador * (cantJugador* 2);
-
             for (int i = 1; i < cantDeCartas+1; i++)
             {
-                //if ((i % 2) == 0) {
-                //    Rojo.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i));
-                //    numeroJugador++;
-                //} else { Azul.miembros[numeroJugador].mano.Add(Truco.RepartirCarta(i)); }
-                //if (numeroJugador == jugadores)
-                //{ numeroJugador = 0; }
                 jugadores[indexJugador].mano.Add(Truco.RepartirCarta(i));
                 contador++;
                 if (contador == 3) { contador = 0; indexJugador++; }
@@ -221,19 +207,30 @@ namespace Entidades
                 if (play.ia)
                 {
                     //Thread.Sleep(Truco.r.Next(500, 2000));
-                    play.JugarCarta(play.IA.DecidirCartaParaPrimera());
+                    //cartasJugadas.Add(play.JugarCarta(play.IA.JugarCartaMasBaja()));
+                    historial.Add(new Jugada(play, play.JugarCarta(play.IA.JugarCartaMasBaja())));
                 } else
                 {
                     return turnoActual;
                 }
                 Truco.turnoActual++;
-                if(turnoActual > cont) { turnoActual = 1; }
+                if(turnoActual > cont) { turnoActual = 1;
+                    //evaluar puntos 1ra ronda
+                    CalularPuntos();
+                }
                 play = null;
             }
             return cantDeTurnos;
         }
         /////////////////////////////////////////
-        public static void CalularPuntos() { }
+        public static void CalularPuntos() {
+            foreach (var item in historial)
+            {
+                /*yo se q el jugador s/ia tiene turnos 1,3,5 o bien 2,4,6 
+                 ahi clavas un if para determinar cuales cartas son de un equipo y cuales d otro
+                 */
+            }
+        }
         public static void CantaronEnvido() { }
         /////////////////////////////////////////
         private static void CrearCartas()

@@ -15,16 +15,14 @@ namespace TestingForm
     public partial class Testing : Form
     {
         Jugador jugador;
-        Jugador botB;
-        Jugador botC;
-        Jugador botD;
-        Jugador botE;
-        Jugador botF;
+        Carta Uno; Carta Dos; Carta Tres;
+        
         public Testing()
         {
             InitializeComponent();
             Truco.IniciarJuego(eTipoPartida.v2);
             jugador = Truco.RetornarJugador();
+            Uno = jugador.mano[0]; Dos = jugador.mano[1]; Tres = jugador.mano[2];
             SetInicialDeCartas();
             DeterminarPosicionDelMazo();//NEED TO BE FIXED
             Truco.play = Truco.RetornarJugadorQueDebeJugar();
@@ -33,51 +31,36 @@ namespace TestingForm
         
         private void btnCarta0_Click(object sender, EventArgs e)
         {
-            Truco.play.JugarCarta(0);
-            btnP0Carta0.Hide();
-            Truco.turnoActual++;
-            Truco.play = Truco.RetornarJugadorQueDebeJugar();
-            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
+            if (Truco.play == jugador) {
+                //Truco.cartasJugadas.Add(Truco.play.JugarCarta(Uno));
+                Truco.historial.Add(new Jugada(Truco.play, Truco.play.JugarCarta(Uno)));
+                btnP0Carta0.Hide();
+                Truco.turnoActual++;
+                Truco.play = Truco.RetornarJugadorQueDebeJugar();
+                txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
+            } else { MessageBox.Show("Tranca Pa!... no te toca todavia... "); } 
         }
         private void btnCarta1_Click(object sender, EventArgs e)
         {
-            Truco.play.JugarCarta(1);
-            btnP0Carta1.Hide();
-            Truco.turnoActual++;
-            Truco.play = Truco.RetornarJugadorQueDebeJugar();
-            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
-        }
+            if (Truco.play == jugador) {
+                //Truco.cartasJugadas.Add(Truco.play.JugarCarta(Dos));
+                Truco.historial.Add(new Jugada(Truco.play, Truco.play.JugarCarta(Dos)));
+                btnP0Carta1.Hide();
+                Truco.turnoActual++;
+                Truco.play = Truco.RetornarJugadorQueDebeJugar();
+                txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
+        } else { MessageBox.Show("Tranca Pa!... no te toca todavia... "); }
+}
         private void btnCarta2_Click(object sender, EventArgs e)
         {
-            Truco.play.JugarCarta(2);
-            btnP0Carta2.Hide();
-            Truco.turnoActual++;
-            Truco.play = Truco.RetornarJugadorQueDebeJugar();
-            txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
-        }
-        private void RevelarCarta0(Image image)
-        {
-            if (image != null)
-            {
-                if (p0Card0.BackgroundImage == null)
-                {
-                    p0Card0.Show();
-                    p0Card0.BackgroundImageLayout = ImageLayout.Stretch;
-                    p0Card0.BackgroundImage = image;
-                }
-                else if (p0Card1.BackgroundImage == null)
-                {
-                    p0Card1.Show();
-                    p0Card1.BackgroundImageLayout = ImageLayout.Stretch;
-                    p0Card1.BackgroundImage = image;
-                }
-                else
-                {
-                    p0Card2.Show();
-                    p0Card2.BackgroundImageLayout = ImageLayout.Stretch;
-                    p0Card2.BackgroundImage = image;
-                }
-            }else { }
+            if (Truco.play == jugador) {
+                //Truco.cartasJugadas.Add(Truco.play.JugarCarta(Tres));
+                Truco.historial.Add(new Jugada(Truco.play, Truco.play.JugarCarta(Tres)));
+                btnP0Carta2.Hide();
+                Truco.turnoActual++;
+                Truco.play = Truco.RetornarJugadorQueDebeJugar();
+                txtTurno.Text = "Turno: " + Truco.turnoActual + " - " + Truco.play.nombre;
+            } else { MessageBox.Show("Tranca Pa!... no te toca todavia... "); }
         }
         private void DeterminarPosicionDelMazo()
         {
@@ -90,17 +73,13 @@ namespace TestingForm
             int b = 0; int c = 0; int d = 0;
             switch (jugador.turno)
             {
-                case 1:
-                    b = 2; c = 3; d = 4;
+                case 1: b = 2; c = 3; d = 4;
                     break;
-                case 2:
-                    b = 3; c = 4; d = 1;
+                case 2: b = 3; c = 4; d = 1;
                     break;
-                case 3:
-                    b = 4; c = 1; d = 2;
+                case 3: b = 4; c = 1; d = 2;
                     break;
-                case 4:
-                    b = 1; c = 2; d = 3;
+                case 4: b = 1; c = 2; d = 3;
                     break;
                 default:
                     break;
@@ -125,7 +104,6 @@ namespace TestingForm
             btnP3Carta1.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP3Carta1.BackgroundImageLayout = ImageLayout.Stretch;
             btnP3Carta0.BackgroundImage = Image.FromFile(SideBoard.dorso); btnP3Carta0.BackgroundImageLayout = ImageLayout.Stretch;
         }
-
         private void btnStart_Click(object sender, EventArgs e)
         {
             Truco.auxTurno = Truco.Jugar(Truco.jugadores.Count());

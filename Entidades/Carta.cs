@@ -29,7 +29,9 @@ namespace Entidades
             indexer = 0;
             this.numero = n; this.palo = p;
             ObtenerValor();
-            frente = Image.FromFile(SideBoard.cards + numero.ToString() + palo.ToString()+".png");
+            if(p != ePalo.Comodin) { 
+                frente = Image.FromFile(SideBoard.cards + numero.ToString() + palo.ToString()+".png");
+            }
         }
         public string MostrarCarta() {
             return $"{this.numero} de {this.Palo}";
@@ -96,5 +98,15 @@ namespace Entidades
             if(c1.Numero == c2.Numero && c1.Palo == c2.Palo) { return true; } return false;
         }
         public static bool operator !=(Carta c1, Carta c2) { return !(c1 == c2); }
+        public static bool operator ==(List<Carta> l, Carta c)
+        {
+            foreach (var item in l) { if (item == c) { return true; } }
+            return false;
+        }
+        public static bool operator !=(List<Carta> l, Carta c)
+        {
+            foreach (var item in l) { if (item == c) { return false; } }
+            return true;
+        }
     }
 }
